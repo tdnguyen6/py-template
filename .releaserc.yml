@@ -1,0 +1,26 @@
+tagFormat: '${version}'
+dryRun: false
+ci: false
+
+branches:
+  - main
+  - name: beta
+    prerelease: true
+  # - "+([0-9])?(.{+([0-9]),x}).x"
+
+plugins:
+  - - "@semantic-release/commit-analyzer"
+    - config: "@insurgentlab/conventional-changelog-preset"
+      releaseRules: "@insurgentlab/conventional-changelog-preset/release-rules"
+  - - "@semantic-release/release-notes-generator"
+    - config: "@insurgentlab/conventional-changelog-preset"
+  - - "@semantic-release/changelog"
+    - changelogFile: CHANGELOG.md
+  - - "@semantic-release/git"
+    - assets:
+      - CHANGELOG.md
+      message: |-
+        Release ${nextRelease.version} [skip ci]
+
+        ${nextRelease.notes}
+  - "@semantic-release/github"
