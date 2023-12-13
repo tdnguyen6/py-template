@@ -14,7 +14,7 @@ jobs:
         with:
           semantic_version: 22
           extra_plugins: |
-            @@insurgentlab/conventional-changelog-preset@^7.0.0
+            @insurgentlab/conventional-changelog-preset@^7.0.0
             @semantic-release/changelog@6.0.3
             @semantic-release/git@^10.0.1
         env:
